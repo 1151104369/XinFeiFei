@@ -1,12 +1,6 @@
-#include <SDKDDKVer.h>
 
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
 
-using namespace System;
-using namespace System::Runtime::InteropServices;
-
-void LowByte(int* pointer, Byte value)
+void Lowchar(int* pointer, char value)
 {
 	int temp = (*pointer >> 8) << 8;
 	temp |= value;
@@ -50,7 +44,7 @@ void* InitKey(void *key)
   unsigned int v33; // ecx@26
   signed int v34; // [sp+10h] [bp-4h]@1
 
-  v1 = (int)((char *)key + 836);
+  v1 = *(int *)((char *)key + 836);
   v34 = 1024;
   do
   {
@@ -58,31 +52,31 @@ void* InitKey(void *key)
     if ( !v2 || v2 == 3 )
     {
       v21 = *((unsigned int *)key + 4);
-      v22 = ((unsigned __int8)*((unsigned int *)key + 5) + 1) & 0x3F;
-      LowByte(&v23, ((*((unsigned int *)key + 5) + 1) & 0x3F) - *((unsigned int *)key + 3));
+      v22 = ((unsigned char)*((unsigned int *)key + 5) + 1) & 0x3F;
+      Lowchar(&v23, ((*((unsigned int *)key + 5) + 1) & 0x3F) - *((unsigned int *)key + 3));
       v24 = (*((unsigned int *)key + 5) + 1) & 0x3F;
       *((unsigned int *)key + 5) = v22;
       v23 &= 0x3Fu;
-      v25 = (v24 - (BYTE)v21) & 0x3F;
+      v25 = (v24 - (char)v21) & 0x3F;
       *((unsigned int *)key + v22 + 7) = *((unsigned int *)key + v25 + 7) + *((unsigned int *)key + v23 + 7);
       v26 = *((unsigned int *)key + *((unsigned int *)key + 5) + 7);
       v27 = v26 < *((unsigned int *)key + v23 + 7) || v26 < *((unsigned int *)key + v25 + 7);
       *((unsigned int *)key + 6) = v27;
       v28 = *((unsigned int *)key + 73);
-      v29 = ((unsigned __int8)*((unsigned int *)key + 74) + 1) & 0x3F;
-      LowByte(&v30, ((*((unsigned int *)key + 74) + 1) & 0x3F) - *((unsigned int *)key + 72));
+      v29 = ((unsigned char)*((unsigned int *)key + 74) + 1) & 0x3F;
+      Lowchar(&v30, ((*((unsigned int *)key + 74) + 1) & 0x3F) - *((unsigned int *)key + 72));
       v31 = (*((unsigned int *)key + 74) + 1) & 0x3F;
       *((unsigned int *)key + 74) = v29;
       v30 &= 0x3Fu;
-      v32 = (v31 - (BYTE)v28) & 0x3F;
+      v32 = (v31 - (char)v28) & 0x3F;
       *((unsigned int *)key + v29 + 76) = *((unsigned int *)key + v32 + 76) + *((unsigned int *)key + v30 + 76);
       v33 = *((unsigned int *)key + *((unsigned int *)key + 74) + 76);
       *((unsigned int *)key + 75) = v33 < *((unsigned int *)key + v30 + 76) || v33 < *((unsigned int *)key + v32 + 76);
 LABEL_19:
-      v16 = ((unsigned __int8)*((unsigned int *)key + 143) + 1) & 0x3F;
+      v16 = ((unsigned char)*((unsigned int *)key + 143) + 1) & 0x3F;
       *((unsigned int *)key + 143) = v16;
-      v17 = ((BYTE)v16 - (unsigned __int8)*((unsigned int *)key + 141)) & 0x3F;
-      v18 = ((BYTE)v16 - (unsigned __int8)*((unsigned int *)key + 142)) & 0x3F;
+      v17 = ((char)v16 - (unsigned char)*((unsigned int *)key + 141)) & 0x3F;
+      v18 = ((char)v16 - (unsigned char)*((unsigned int *)key + 142)) & 0x3F;
       *((unsigned int *)key + v16 + 145) = *((unsigned int *)key + v18 + 145) + *((unsigned int *)key + v17 + 145);
       v19 = *((unsigned int *)key + *((unsigned int *)key + 143) + 145);
       v20 = v19 < *((unsigned int *)key + v17 + 145) || v19 < *((unsigned int *)key + v18 + 145);
@@ -94,12 +88,12 @@ LABEL_19:
       v3 = 1;
     if ( *((unsigned int *)key + 6) == v3 )
     {
-      v4 = ((unsigned __int8)*((unsigned int *)key + 5) + 1) & 0x3F;
-      LowByte(&v5, ((*((unsigned int *)key + 5) + 1) & 0x3F) - *((unsigned int *)key + 3));
+      v4 = ((unsigned char)*((unsigned int *)key + 5) + 1) & 0x3F;
+      Lowchar(&v5, ((*((unsigned int *)key + 5) + 1) & 0x3F) - *((unsigned int *)key + 3));
       v6 = *((unsigned int *)key + 4);
       *((unsigned int *)key + 5) = v4;
       v5 &= 0x3Fu;
-      v7 = ((BYTE)v4 - (BYTE)v6) & 0x3F;
+      v7 = ((char)v4 - (char)v6) & 0x3F;
       *((unsigned int *)key + v4 + 7) = *((unsigned int *)key + v7 + 7) + *((unsigned int *)key + v5 + 7);
       v8 = *((unsigned int *)key + *((unsigned int *)key + 5) + 7);
       v9 = v8 < *((unsigned int *)key + v5 + 7) || v8 < *((unsigned int *)key + v7 + 7);
@@ -107,12 +101,12 @@ LABEL_19:
     }
     if ( *((unsigned int *)key + 75) == v3 )
     {
-      v10 = ((unsigned __int8)*((unsigned int *)key + 74) + 1) & 0x3F;
-      LowByte(&v11, ((*((unsigned int *)key + 74) + 1) & 0x3F) - *((unsigned int *)key + 72));
+      v10 = ((unsigned char)*((unsigned int *)key + 74) + 1) & 0x3F;
+      Lowchar(&v11, ((*((unsigned int *)key + 74) + 1) & 0x3F) - *((unsigned int *)key + 72));
       v12 = *((unsigned int *)key + 73);
       *((unsigned int *)key + 74) = v10;
       v11 &= 0x3Fu;
-      v13 = ((BYTE)v10 - (BYTE)v12) & 0x3F;
+      v13 = ((char)v10 - (char)v12) & 0x3F;
       *((unsigned int *)key + v10 + 76) = *((unsigned int *)key + v13 + 76) + *((unsigned int *)key + v11 + 76);
       v14 = *((unsigned int *)key + *((unsigned int *)key + 74) + 76);
       v15 = v14 < *((unsigned int *)key + v11 + 76) || v14 < *((unsigned int *)key + v13 + 76);
@@ -130,7 +124,7 @@ LABEL_32:
   return key;
 }
 
-int __cdecl EncryptDecrypt(void* key, Byte* data, int length)
+int __cdecl EncryptDecrypt(void* key, char* data, int length)
 {
   int v3; // edi@1
   void *v4; // esi@2
@@ -178,7 +172,7 @@ int __cdecl EncryptDecrypt(void* key, Byte* data, int length)
             v11 = v6 - v8;
             do
             {
-              *(BYTE *)v4 ^= *v9;
+              *(char *)v4 ^= *v9;
               v4 = (char *)v4 + 1;
               ++v9;
               --v11;
@@ -191,7 +185,7 @@ int __cdecl EncryptDecrypt(void* key, Byte* data, int length)
         }
         else
         {
-          result = (int)InitKey(key);
+          result = *(int *)InitKey(key);
         }
       }
       while ( v3 > 0 );
@@ -200,14 +194,14 @@ int __cdecl EncryptDecrypt(void* key, Byte* data, int length)
   return result;
 }
 
-int __cdecl GenerateKey(int seed, Byte* realKey)
+int __cdecl GenerateKey(int seed, unsigned char* realKey)
 {
-  unsigned __int8 *v2; // ecx@1
+  unsigned char *v2; // ecx@1
   int v3; // edx@1
   signed int v4; // edx@1
-  unsigned __int8 *v5; // edx@1
+  unsigned char *v5; // edx@1
   int v6; // eax@2
-  unsigned __int8 *v7; // edi@2
+  unsigned char *v7; // edi@2
   signed int v8; // ebx@2
   signed int v9; // esi@3
   int result; // eax@6
@@ -259,62 +253,4 @@ int __cdecl GenerateKey(int seed, Byte* realKey)
   while ( result );
   *((unsigned int *)realKey + 1) = 4096;
   return result;
-}
-
-namespace FFEncryptionLibrary
-{
-	public ref class KeyPair
-	{
-	private:
-		Byte* encryptionKey;
-		Byte* decryptionKey;
-
-	public:
-		initonly int Seed;
-
-		KeyPair(int seed)
-		{
-			Seed = seed;
-
-			encryptionKey = new BYTE[0xFFFF];
-			decryptionKey = new BYTE[0xFFFF];
-
-			GenerateKey(seed, encryptionKey);
-			GenerateKey(seed, decryptionKey);
-		}
-
-		int Encrypt(array<Byte> ^ %data)
-		{
-			pin_ptr<unsigned char> pointer = &data[0];
-
-			return EncryptDecrypt(encryptionKey, (Byte*)pointer, data->Length);
-		}
-
-		int Encrypt(array<Byte> ^ %data, int offset, int size)
-		{
-			pin_ptr<unsigned char> pointer = &data[offset];
-
-			return EncryptDecrypt(encryptionKey, (Byte*)pointer, size);
-		}
-
-		int Decrypt(array<Byte> ^ %data)
-		{
-			pin_ptr<unsigned char> pointer = &data[0];
-
-			return EncryptDecrypt(decryptionKey, (Byte*)pointer, data->Length);
-		}
-
-		int Decrypt(array<Byte> ^ %data, int offset, int size)
-		{
-			pin_ptr<unsigned char> pointer = &data[offset];
-
-			return EncryptDecrypt(decryptionKey, (Byte*)pointer, size);
-		}
-
-		~KeyPair()
-		{
-			delete[] encryptionKey;
-			delete[] decryptionKey;
-		}
-	};
 }
